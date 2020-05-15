@@ -24,7 +24,7 @@ class ChannelHistoryCrawler:
 
             while history_slice:
                 for message in history_slice:
-                    self._listener.on_history_message(self._channel, message)
+                    await self._listener.on_history_message(self._channel, message)
                 last_message = history_slice[-1]
                 history_slice = await self._fetch_history_slice(
                     last_message, DEFAULT_MAX_RETRIES
